@@ -1,8 +1,9 @@
+#!/bin/sh
 interface='ens192'
 for (( i=1; i<=255; i++ ))
 do
-    lookup=$(nslookup "host$i.k8.local 10.82.120.100")
-    if [ $? -eq 1 ]
+    
+    if  ! lookup=$(nslookup "host$i.k8.local" 10.82.120.100);
     then
         echo "host$i.k8.local does not exist"
         ADDR=$(ip address show dev $interface | grep 'inet' | grep -v 'inet6' | awk '{print $2}')
