@@ -1,7 +1,7 @@
 interface='ens192'
 for (( i=1; i<=255; i++ ))
 do
-    lookup=$(nslookup "host$i.k8.local")
+    lookup=$(nslookup "host$i.k8.local 10.82.120.100")
     if [ $? -eq 1 ]
     then
         echo "host$i.k8.local does not exist"
